@@ -25,5 +25,9 @@ class Slack
 
     parsed_response = JSON.parse(response.body)
     Rails.logger.info(parsed_response)
+
+    open("public/list.txt", "a") do |f|
+      f << "[#{Date.today}] #{message}\n"
+    end
   end
 end
